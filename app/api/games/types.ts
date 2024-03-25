@@ -7,9 +7,11 @@ export type Game = {
 export type DartsScore = {
   id: string;
   game_id: string;
-  target: "20" | "19" | "18" | "17" | "16" | "15" | "BULL";
+  target: CricketNumber;
   throws: number;
 };
+
+type CricketNumber = "20" | "19" | "18" | "17" | "16" | "15" | "BULL";
 
 export type GameWithScores = Game & {
   scores: DartsScore[];

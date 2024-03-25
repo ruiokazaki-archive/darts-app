@@ -1,39 +1,55 @@
-import { sql } from '@vercel/postgres'
+import { sql } from "@vercel/postgres";
 
 export async function seed() {
-  const createTable = await sql`
-    CREATE TABLE IF NOT EXISTS users (
+  const createTable = await Promise.all([
+    sql`
+    CREATE TABLE games (
       id SERIAL PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
-      email VARCHAR(255) UNIQUE NOT NULL,
-      image VARCHAR(255),
-      "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+      created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+      played_at TIMESTAMP WITH TIME ZONE NOT NULL
     );
-    `
+    `,
+    sql`
+    CREATE TABLE darts_scores (
+      id SERIAL PRIMARY KEY,
+      game_id INTEGER REFERENCES games(id),
+      target VARCHAR(4) CHECK (target IN ('20', '19', '18', '17', '16', '15', 'BULL')),
+      throws INTEGER NOT NULL
+    );
+    `,
+  ]);
 
-  console.log(`Created "users" table`)
+  const games = await Promise.all([
+    sql`INSERT INTO games (played_at) VALUES ('2024-03-25 10:00:00+09');`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (1, '20', 13);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (1, '19', 13);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (1, '18', 11);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (1, '17', 18);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (1, '16', 8);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (1, '15', 12);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (1, 'BULL', 20);`,
 
-  const users = await Promise.all([
-    sql`
-          INSERT INTO users (name, email, image)
-          VALUES ('Guillermo Rauch', 'rauchg@vercel.com', 'https://images.ctfassets.net/e5382hct74si/2P1iOve0LZJRZWUzfXpi9r/9d4d27765764fb1ad7379d7cbe5f1043/ucxb4lHy_400x400.jpg')
-          ON CONFLICT (email) DO NOTHING;
-      `,
-    sql`
-          INSERT INTO users (name, email, image)
-          VALUES ('Lee Robinson', 'lee@vercel.com', 'https://images.ctfassets.net/e5382hct74si/4BtM41PDNrx4z1ml643tdc/7aa88bdde8b5b7809174ea5b764c80fa/adWRdqQ6_400x400.jpg')
-          ON CONFLICT (email) DO NOTHING;
-      `,
-    sql`
-          INSERT INTO users (name, email, image)
-          VALUES ('Steven Tey', 'stey@vercel.com', 'https://images.ctfassets.net/e5382hct74si/4QEuVLNyZUg5X6X4cW4pVH/eb7cd219e21b29ae976277871cd5ca4b/profile.jpg')
-          ON CONFLICT (email) DO NOTHING;
-      `,
-  ])
-  console.log(`Seeded ${users.length} users`)
+    sql`INSERT INTO games (played_at) VALUES ('2024-03-25 12:00:00+09');`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (2, '20', 13);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (2, '19', 5);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (2, '18', 5);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (2, '17', 10);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (2, '16', 9);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (2, '15', 10);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (2, 'BULL', 17);`,
+
+    sql`INSERT INTO games (played_at) VALUES ('2024-03-25 14:00:00+09');`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (3, '20', 9);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (3, '19', 11);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (3, '18', 7);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (3, '17', 10);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (3, '16', 12);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (3, '15', 8);`,
+    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (3, 'BULL', 7);`,
+  ]);
 
   return {
     createTable,
-    users,
-  }
+    games,
+  };
 }

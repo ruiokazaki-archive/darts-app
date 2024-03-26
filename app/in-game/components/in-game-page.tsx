@@ -38,6 +38,22 @@ const Presenter: FC = () => {
 
   return (
     <div>
+      <style>
+        {`
+          table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+          th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+          }
+          th {
+            background-color: #f2f2f2;
+          }
+        `}
+      </style>
       <table>
         <thead>
           <tr>

@@ -1,4 +1,5 @@
 import { getGames } from "@/app/api/games/fetcher";
+import Link from "next/link";
 
 export const runtime = "edge";
 export const preferredRegion = "home";
@@ -76,6 +77,7 @@ export default async function Home() {
           ))}
         </tbody>
       </table>
+      <Link href="/in-game">ゲームを開始</Link>
     </main>
   );
 }

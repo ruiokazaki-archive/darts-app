@@ -2,7 +2,7 @@
 
 import type { FC } from "react";
 import { memo, useState } from "react";
-import { postGame } from "@/app/in-game/actions/post-game";
+import { postGameActions } from "@/app/in-game/actions/post-game";
 
 const TARGETS = ["20", "19", "18", "17", "16", "15", "bull"] as const;
 type Target = (typeof TARGETS)[number];
@@ -113,7 +113,7 @@ const Presenter: FC = () => {
           ))}
         </tbody>
       </table>
-      <form action={postGame}>
+      <form action={postGameActions}>
         <input
           id="target-20"
           type="hidden"

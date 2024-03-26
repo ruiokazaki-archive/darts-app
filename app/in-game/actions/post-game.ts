@@ -1,14 +1,12 @@
 "use server";
-import { customFetch } from "@/common/custom-fetch";
 
-export async function postGame(data: FormData) {
-  try {
-    await customFetch("/api/games", {
-      method: "POST",
-      body: data,
-    });
-  } catch (error) {
-    console.log(error);
-    throw new Error("Failed to post game");
+import { postGame } from "@/app/api/games/fetcher";
+import { redirect } from "next/navigation";
+
+export async function postGameActions(formData: FormData) {
+  const response = await postGame(formData);
+
+  if (response.status === 201) {
+    redirect("/");
   }
 }

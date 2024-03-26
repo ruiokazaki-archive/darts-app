@@ -6,7 +6,11 @@ export const preferredRegion = "home";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const games = await getGames();
+  const result = await getGames();
+  if (result.status !== 200)
+    return new Response("Error", { status: result.status });
+
+  const games = result.data;
 
   return (
     <main>

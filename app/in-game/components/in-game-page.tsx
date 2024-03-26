@@ -2,6 +2,7 @@
 
 import type { FC } from "react";
 import { memo, useState } from "react";
+import { postGame } from "@/app/in-game/actions/post-game";
 
 const TARGETS = ["20", "19", "18", "17", "16", "15", "bull"] as const;
 type Target = (typeof TARGETS)[number];
@@ -51,6 +52,10 @@ const Presenter: FC = () => {
           }
           th {
             background-color: #f2f2f2;
+          }
+          button {
+            width: 100%;
+            height: 40px;
           }
         `}
       </style>
@@ -108,19 +113,57 @@ const Presenter: FC = () => {
           ))}
         </tbody>
       </table>
-      <form>
-        <input type="number" name="target-20" value={scores[20].throwsCount} />
-        <input type="number" name="target-19" value={scores[19].throwsCount} />
-        <input type="number" name="target-18" value={scores[18].throwsCount} />
-        <input type="number" name="target-17" value={scores[17].throwsCount} />
-        <input type="number" name="target-16" value={scores[16].throwsCount} />
-        <input type="number" name="target-15" value={scores[15].throwsCount} />
+      <form action={postGame}>
         <input
-          type="number"
+          id="target-20"
+          type="hidden"
+          name="target-20"
+          value={scores[20].throwsCount}
+        />
+        <input
+          id="target-19"
+          type="hidden"
+          name="target-19"
+          value={scores[19].throwsCount}
+        />
+        <input
+          id="target-18"
+          type="hidden"
+          name="target-18"
+          value={scores[18].throwsCount}
+        />
+        <input
+          id="target-17"
+          type="hidden"
+          name="target-17"
+          value={scores[17].throwsCount}
+        />
+        <input
+          id="target-16"
+          type="hidden"
+          name="target-16"
+          value={scores[16].throwsCount}
+        />
+        <input
+          id="target-15"
+          type="hidden"
+          name="target-15"
+          value={scores[15].throwsCount}
+        />
+        <input
+          id="target-bull"
+          type="hidden"
           name="target-bull"
           value={scores.bull.throwsCount}
         />
-        <input type="submit" value="Submit!" />
+        <button
+          type="submit"
+          disabled={Object.values(scores).some(
+            (score) => score.marksCount < 10
+          )}
+        >
+          DONE
+        </button>
       </form>
     </div>
   );

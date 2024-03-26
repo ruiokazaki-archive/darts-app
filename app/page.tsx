@@ -46,6 +46,11 @@ export default async function Home() {
           </tr>
         </thead>
         <tbody>
+          {games.length === 0 && (
+            <tr>
+              <td colSpan={9}>No data</td>
+            </tr>
+          )}
           {games.map((game) => (
             <tr key={game.id}>
               <td>{`${new Date(game.played_at).getFullYear()}/${new Date(

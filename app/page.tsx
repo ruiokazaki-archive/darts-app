@@ -53,9 +53,9 @@ export default async function Home() {
           )}
           {games.map((game) => (
             <tr key={game.id}>
-              <td>{`${new Date(game.played_at).getFullYear()}/${new Date(
-                game.played_at
-              ).getMonth()}/${new Date(game.played_at).getDay()} ${new Date(
+              <td>{`${new Date(game.played_at).getFullYear()}/${
+                new Date(game.played_at).getMonth() + 1
+              }/${new Date(game.played_at).getDate()} ${new Date(
                 game.played_at
               ).getHours()}:${new Date(game.played_at).getMinutes()}`}</td>
               <td>

@@ -39,54 +39,58 @@ const Presenter: FC = () => {
   return (
     <div>
       <table>
-        <tr>
-          <th>TARGET</th>
-          <th>CURRENT MARK</th>
-          <th>CURRENT FORK</th>
-          <th>1MARK</th>
-          <th>2MARK</th>
-          <th>3MARK</th>
-          <th>MISS</th>
-        </tr>
-        {TARGETS.map((target) => (
-          <tr key={target}>
-            <td>{target}</td>
-            <td>{scores[target].marksCount}</td>
-            <td>{scores[target].throwsCount}</td>
-            <td>
-              <button
-                disabled={!(scores[target].marksCount < 10)}
-                onClick={() => handleChange(target, 1)}
-              >
-                Count!
-              </button>
-            </td>
-            <td>
-              <button
-                disabled={!(scores[target].marksCount < 10)}
-                onClick={() => handleChange(target, 2)}
-              >
-                Count!
-              </button>
-            </td>
-            <td>
-              <button
-                disabled={!(scores[target].marksCount < 10)}
-                onClick={() => handleChange(target, 3)}
-              >
-                Count!
-              </button>
-            </td>
-            <td>
-              <button
-                disabled={!(scores[target].marksCount < 10)}
-                onClick={() => handleChange(target, 0)}
-              >
-                Count!
-              </button>
-            </td>
+        <thead>
+          <tr>
+            <th>TARGET</th>
+            <th>CURRENT MARK</th>
+            <th>CURRENT FORK</th>
+            <th>1MARK</th>
+            <th>2MARK</th>
+            <th>3MARK</th>
+            <th>MISS</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {TARGETS.map((target) => (
+            <tr key={target}>
+              <td>{target}</td>
+              <td>{scores[target].marksCount}</td>
+              <td>{scores[target].throwsCount}</td>
+              <td>
+                <button
+                  disabled={!(scores[target].marksCount < 10)}
+                  onClick={() => handleChange(target, 1)}
+                >
+                  Count!
+                </button>
+              </td>
+              <td>
+                <button
+                  disabled={!(scores[target].marksCount < 10)}
+                  onClick={() => handleChange(target, 2)}
+                >
+                  Count!
+                </button>
+              </td>
+              <td>
+                <button
+                  disabled={!(scores[target].marksCount < 10)}
+                  onClick={() => handleChange(target, 3)}
+                >
+                  Count!
+                </button>
+              </td>
+              <td>
+                <button
+                  disabled={!(scores[target].marksCount < 10)}
+                  onClick={() => handleChange(target, 0)}
+                >
+                  Count!
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
       <form>
         <input type="number" name="target-20" value={scores[20].throwsCount} />

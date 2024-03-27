@@ -1,13 +1,15 @@
 "use client";
 
-import type { FC } from "react";
-import { memo, useState } from "react";
+import type { ButtonHTMLAttributes, DetailedHTMLProps, FC } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { postGameActions } from "@/app/in-game/actions/post-game";
 
 const TARGETS = ["20", "19", "18", "17", "16", "15", "bull"] as const;
 type Target = (typeof TARGETS)[number];
 
 const Presenter: FC = () => {
+  const [currentTarget, setCurrentTarget] = useState<Target>(TARGETS[0]);
+
   const [scores, setScores] = useState<{
     [key in Target]: { marksCount: number; throwsCount: number };
   }>({
@@ -23,96 +25,106 @@ const Presenter: FC = () => {
   const handleChange = (
     target: Target,
     difference: number,
-    mode: "increment" | "decrement" = "increment"
+    throwsCount = 1
   ) => {
     setScores((prevScores) => ({
       ...prevScores,
       [target]: {
-        marksCount:
-          mode === "increment"
-            ? prevScores[target].marksCount + difference
-            : prevScores[target].marksCount - difference,
-        throwsCount: prevScores[target].throwsCount + 1,
+        marksCount: prevScores[target].marksCount + difference,
+        throwsCount: prevScores[target].throwsCount + throwsCount,
       },
     }));
   };
 
+  const submitRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (scores[currentTarget].marksCount < 10) {
+      return;
+    }
+
+    const nextTargetIndex = TARGETS.indexOf(currentTarget) + 1;
+    if (nextTargetIndex < TARGETS.length) {
+      setCurrentTarget(TARGETS[nextTargetIndex]);
+    } else {
+      submitRef.current?.click();
+    }
+  }, [scores, currentTarget]);
+
+  const buttonProps: DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > = {
+    style: {
+      display: "block",
+      width: "100%",
+      height: "100%",
+    },
+    type: "button",
+  };
+
   return (
     <div>
-      <style>
-        {`
-          table {
-            width: 100%;
-            border-collapse: collapse;
+      <h2>
+        currentTarget: <span style={{ fontSize: 40 }}>{currentTarget}</span>
+      </h2>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gridTemplateRows: "repeat(2, 60px)",
+        }}
+      >
+        <button
+          {...buttonProps}
+          disabled={scores[currentTarget].marksCount >= 10}
+          onClick={() => handleChange(currentTarget, 1)}
+        >
+          1MARK
+        </button>
+        <button
+          {...buttonProps}
+          disabled={scores[currentTarget].marksCount >= 10}
+          onClick={() => handleChange(currentTarget, 2)}
+        >
+          2MARK
+        </button>
+        <button
+          {...buttonProps}
+          disabled={
+            scores[currentTarget].marksCount >= 10 || currentTarget === "bull"
           }
-          th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-          }
-          th {
-            background-color: #f2f2f2;
-          }
-          button {
-            width: 100%;
-            height: 40px;
-          }
-        `}
-      </style>
-      <table>
-        <thead>
-          <tr>
-            <th>TARGET</th>
-            <th>CURRENT MARK</th>
-            <th>CURRENT FORK</th>
-            <th>1MARK</th>
-            <th>2MARK</th>
-            <th>3MARK</th>
-            <th>MISS</th>
-          </tr>
-        </thead>
-        <tbody>
-          {TARGETS.map((target) => (
-            <tr key={target}>
-              <td>{target}</td>
-              <td>{scores[target].marksCount}</td>
-              <td>{scores[target].throwsCount}</td>
-              <td>
-                <button
-                  disabled={!(scores[target].marksCount < 10)}
-                  onClick={() => handleChange(target, 1)}
-                >
-                  Count!
-                </button>
-              </td>
-              <td>
-                <button
-                  disabled={!(scores[target].marksCount < 10)}
-                  onClick={() => handleChange(target, 2)}
-                >
-                  Count!
-                </button>
-              </td>
-              <td>
-                <button
-                  disabled={!(scores[target].marksCount < 10)}
-                  onClick={() => handleChange(target, 3)}
-                >
-                  Count!
-                </button>
-              </td>
-              <td>
-                <button
-                  disabled={!(scores[target].marksCount < 10)}
-                  onClick={() => handleChange(target, 0)}
-                >
-                  Count!
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          onClick={() => handleChange(currentTarget, 3)}
+        >
+          3MARK
+        </button>
+        <button
+          {...buttonProps}
+          disabled={scores[currentTarget].marksCount >= 10}
+          onClick={() => handleChange(currentTarget, 0)}
+        >
+          1MISS
+        </button>
+        <button
+          {...buttonProps}
+          disabled={scores[currentTarget].marksCount >= 10}
+          onClick={() => handleChange(currentTarget, 0, 2)}
+        >
+          2MISS
+        </button>
+        <button
+          {...buttonProps}
+          disabled={scores[currentTarget].marksCount >= 10}
+          onClick={() => handleChange(currentTarget, 0, 3)}
+        >
+          3MISS
+        </button>
+      </div>
+
+      <h3>currentScore: {scores[currentTarget].marksCount}</h3>
+      <h3>currentThrows: {scores[currentTarget].throwsCount}</h3>
+
       <form action={postGameActions}>
         <input
           id="target-20"
@@ -157,12 +169,14 @@ const Presenter: FC = () => {
           value={scores.bull.throwsCount}
         />
         <button
+          hidden
+          ref={submitRef}
           type="submit"
           disabled={Object.values(scores).some(
             (score) => score.marksCount < 10
           )}
         >
-          DONE
+          Finish
         </button>
       </form>
     </div>

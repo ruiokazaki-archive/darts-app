@@ -19,18 +19,43 @@ export async function GET() {
 export async function POST(request: Request) {
   const formData = await request.formData();
   const scores = {
-    20: formData.get("target-20"),
-    19: formData.get("target-19"),
-    18: formData.get("target-18"),
-    17: formData.get("target-17"),
-    16: formData.get("target-16"),
-    15: formData.get("target-15"),
-    bull: formData.get("target-bull"),
+    20: {
+      throws: formData.get("target-20-throws_count"),
+      marks: formData.get("target-20-marks_count"),
+    },
+    19: {
+      throws: formData.get("target-19-throws_count"),
+      marks: formData.get("target-19-marks_count"),
+    },
+    18: {
+      throws: formData.get("target-18-throws_count"),
+      marks: formData.get("target-18-marks_count"),
+    },
+    17: {
+      throws: formData.get("target-17-throws_count"),
+      marks: formData.get("target-17-marks_count"),
+    },
+    16: {
+      throws: formData.get("target-16-throws_count"),
+      marks: formData.get("target-16-marks_count"),
+    },
+    15: {
+      throws: formData.get("target-15-throws_count"),
+      marks: formData.get("target-15-marks_count"),
+    },
+    bull: {
+      throws: formData.get("target-bull-throws_count"),
+      marks: formData.get("target-bull-marks_count"),
+    },
   };
 
   if (
     Object.values(scores).some(
-      (score) => typeof score !== "string" || isNaN(Number(score))
+      (score) =>
+        typeof score.throws !== "string" ||
+        isNaN(Number(score.throws)) ||
+        typeof score.marks !== "string" ||
+        isNaN(Number(score.marks))
     )
   ) {
     return new Response(null, { status: 400, statusText: "Bad Request" });
@@ -52,27 +77,41 @@ export async function POST(request: Request) {
   const newGame = rows[0];
 
   const result = await Promise.all([
-    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (${
+    sql`INSERT INTO darts_scores (game_id, target, throws, marks) VALUES (${
       newGame.id
-    }, '20', ${scores["20"] as string});`,
-    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (${
+    }, '20', ${scores["20"].throws as string}, ${
+      scores["20"].marks as string
+    });`,
+    sql`INSERT INTO darts_scores (game_id, target, throws, marks) VALUES (${
       newGame.id
-    }, '19', ${scores["19"] as string});`,
-    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (${
+    }, '19', ${scores["19"].throws as string}, ${
+      scores["19"].marks as string
+    });`,
+    sql`INSERT INTO darts_scores (game_id, target, throws, marks) VALUES (${
       newGame.id
-    }, '18', ${scores["18"] as string});`,
-    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (${
+    }, '18', ${scores["18"].throws as string}, ${
+      scores["18"].marks as string
+    });`,
+    sql`INSERT INTO darts_scores (game_id, target, throws, marks) VALUES (${
       newGame.id
-    }, '17', ${scores["17"] as string});`,
-    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (${
+    }, '17', ${scores["17"].throws as string}, ${
+      scores["17"].marks as string
+    });`,
+    sql`INSERT INTO darts_scores (game_id, target, throws, marks) VALUES (${
       newGame.id
-    }, '16', ${scores["16"] as string});`,
-    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (${
+    }, '16', ${scores["16"].throws as string}, ${
+      scores["16"].marks as string
+    });`,
+    sql`INSERT INTO darts_scores (game_id, target, throws, marks) VALUES (${
       newGame.id
-    }, '15', ${scores["15"] as string});`,
-    sql`INSERT INTO darts_scores (game_id, target, throws) VALUES (${
+    }, '15', ${scores["15"].throws as string}, ${
+      scores["15"].marks as string
+    });`,
+    sql`INSERT INTO darts_scores (game_id, target, throws, marks) VALUES (${
       newGame.id
-    }, 'BULL', ${scores["bull"] as string});`,
+    }, 'BULL', ${scores["bull"].throws as string}, ${
+      scores["bull"].marks as string
+    });`,
   ]);
 
   if (result.some((r) => r.rowCount !== 1)) {
@@ -84,15 +123,7 @@ export async function POST(request: Request) {
 
   return Response.json(
     {
-      data: {
-        "target-20": formData.get("target-20"),
-        "target-19": formData.get("target-19"),
-        "target-18": formData.get("target-18"),
-        "target-17": formData.get("target-17"),
-        "target-16": formData.get("target-16"),
-        "target-15": formData.get("target-15"),
-        "target-bull": formData.get("target-bull"),
-      },
+      data: JSON.stringify(scores),
     },
     { status: 201, statusText: "Created" }
   );

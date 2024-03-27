@@ -127,46 +127,88 @@ const Presenter: FC = () => {
 
       <form action={postGameActions}>
         <input
-          id="target-20"
+          id="target-20-throws_count"
           type="hidden"
-          name="target-20"
+          name="target-20-throws_count"
           value={scores[20].throwsCount}
         />
         <input
-          id="target-19"
+          id="target-19-throws_count"
           type="hidden"
-          name="target-19"
+          name="target-19-throws_count"
           value={scores[19].throwsCount}
         />
         <input
-          id="target-18"
+          id="target-18-throws_count"
           type="hidden"
-          name="target-18"
+          name="target-18-throws_count"
           value={scores[18].throwsCount}
         />
         <input
-          id="target-17"
+          id="target-17-throws_count"
           type="hidden"
-          name="target-17"
+          name="target-17-throws_count"
           value={scores[17].throwsCount}
         />
         <input
-          id="target-16"
+          id="target-16-throws_count"
           type="hidden"
-          name="target-16"
+          name="target-16-throws_count"
           value={scores[16].throwsCount}
         />
         <input
-          id="target-15"
+          id="target-15-throws_count"
           type="hidden"
-          name="target-15"
+          name="target-15-throws_count"
           value={scores[15].throwsCount}
         />
         <input
-          id="target-bull"
+          id="target-bull-throws_count"
           type="hidden"
-          name="target-bull"
+          name="target-bull-throws_count"
           value={scores.bull.throwsCount}
+        />
+        <input
+          id="target-20-marks_count"
+          type="hidden"
+          name="target-20-marks_count"
+          value={scores[20].marksCount}
+        />
+        <input
+          id="target-19-marks_count"
+          type="hidden"
+          name="target-19-marks_count"
+          value={scores[19].marksCount}
+        />
+        <input
+          id="target-18-marks_count"
+          type="hidden"
+          name="target-18-marks_count"
+          value={scores[18].marksCount}
+        />
+        <input
+          id="target-17-marks_count"
+          type="hidden"
+          name="target-17-marks_count"
+          value={scores[17].marksCount}
+        />
+        <input
+          id="target-16-marks_count"
+          type="hidden"
+          name="target-16-marks_count"
+          value={scores[16].marksCount}
+        />
+        <input
+          id="target-15-marks_count"
+          type="hidden"
+          name="target-15-marks_count"
+          value={scores[15].marksCount}
+        />
+        <input
+          id="target-bull-marks_count"
+          type="hidden"
+          name="target-bull-marks_count"
+          value={scores.bull.marksCount}
         />
         <button
           hidden

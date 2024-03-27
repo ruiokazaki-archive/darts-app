@@ -9,6 +9,7 @@ export type DartsScore = {
   game_id: string;
   target: CricketNumber;
   throws: number;
+  marks: number;
 };
 
 type CricketNumber = "20" | "19" | "18" | "17" | "16" | "15" | "BULL";

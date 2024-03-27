@@ -7,13 +7,20 @@ export async function getGames() {
 
 export async function postGame(data: FormData) {
   if (
-    !data.get("target-20") ||
-    !data.get("target-19") ||
-    !data.get("target-18") ||
-    !data.get("target-17") ||
-    !data.get("target-16") ||
-    !data.get("target-15") ||
-    !data.get("target-bull")
+    !data.get("target-20-throws_count") ||
+    !data.get("target-19-throws_count") ||
+    !data.get("target-18-throws_count") ||
+    !data.get("target-17-throws_count") ||
+    !data.get("target-16-throws_count") ||
+    !data.get("target-15-throws_count") ||
+    !data.get("target-bull-throws_count") ||
+    !data.get("target-20-marks_count") ||
+    !data.get("target-19-marks_count") ||
+    !data.get("target-18-marks_count") ||
+    !data.get("target-17-marks_count") ||
+    !data.get("target-16-marks_count") ||
+    !data.get("target-15-marks_count") ||
+    !data.get("target-bull-marks_count")
   )
     return Promise.reject("Missing data");
 

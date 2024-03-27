@@ -51,7 +51,7 @@ export default async function Home() {
         <tbody>
           {games.length === 0 && (
             <tr>
-              <td colSpan={9}>No data</td>
+              <td colSpan={11}>No data</td>
             </tr>
           )}
           {games.map((game) => {

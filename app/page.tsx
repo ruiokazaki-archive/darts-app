@@ -1,4 +1,5 @@
 import { getGames } from "@/app/api/games/fetcher";
+import { convertAverageMarksPerRoundToRate } from "@/common/convertAverageMarksPerRoundToRate";
 import Link from "next/link";
 
 export const runtime = "edge";
@@ -53,57 +54,63 @@ export default async function Home() {
               <td colSpan={9}>No data</td>
             </tr>
           )}
-          {games.map((game) => (
-            <tr key={game.id}>
-              <td>{`${new Date(game.played_at).getFullYear()}/${
-                new Date(game.played_at).getMonth() + 1
-              }/${new Date(game.played_at).getDate()} ${new Date(
-                game.played_at
-              ).getHours()}:${new Date(game.played_at).getMinutes()}`}</td>
-              <td>
-                {game.scores.find((score) => score.target === "20")?.throws}
-              </td>
-              <td>
-                {game.scores.find((score) => score.target === "19")?.throws}
-              </td>
-              <td>
-                {game.scores.find((score) => score.target === "18")?.throws}
-              </td>
-              <td>
-                {game.scores.find((score) => score.target === "17")?.throws}
-              </td>
-              <td>
-                {game.scores.find((score) => score.target === "16")?.throws}
-              </td>
-              <td>
-                {game.scores.find((score) => score.target === "15")?.throws}
-              </td>
-              <td>
-                {game.scores.find((score) => score.target === "BULL")?.throws}
-              </td>
-              <td>
-                {game.scores.reduce((acc, score) => acc + score.throws, 0)}
-              </td>
-              <td>
-                {(
-                  ((6 * 10) /
-                    game.scores.reduce(
-                      (acc, score) =>
-                        score.target === "BULL" ? acc : acc + score.throws,
-                      0
-                    )) *
-                  3
-                ).toFixed(2)}
-              </td>
-              <td>
-                {(
-                  ((7 * 10) /
-                    game.scores.reduce((acc, score) => acc + score.throws, 0)) *
-                  3
-                ).toFixed(2)}
-              </td>
-            </tr>
-          ))}
+          {games.map((game) => {
+            const averageMarksPerRound80 =
+              ((6 * 10) /
+                game.scores.reduce(
+                  (acc, score) =>
+                    score.target === "BULL" ? acc : acc + score.throws,
+                  0
+                )) *
+              3;
+            const averageMarksPerRoundFull =
+              ((7 * 10) /
+                game.scores.reduce((acc, score) => acc + score.throws, 0)) *
+              3;
+
+            return (
+              <tr key={game.id}>
+                <td>{`${new Date(game.played_at).getFullYear()}/${
+                  new Date(game.played_at).getMonth() + 1
+                }/${new Date(game.played_at).getDate()} ${new Date(
+                  game.played_at
+                ).getHours()}:${new Date(game.played_at).getMinutes()}`}</td>
+                <td>
+                  {game.scores.find((score) => score.target === "20")?.throws}
+                </td>
+                <td>
+                  {game.scores.find((score) => score.target === "19")?.throws}
+                </td>
+                <td>
+                  {game.scores.find((score) => score.target === "18")?.throws}
+                </td>
+                <td>
+                  {game.scores.find((score) => score.target === "17")?.throws}
+                </td>
+                <td>
+                  {game.scores.find((score) => score.target === "16")?.throws}
+                </td>
+                <td>
+                  {game.scores.find((score) => score.target === "15")?.throws}
+                </td>
+                <td>
+                  {game.scores.find((score) => score.target === "BULL")?.throws}
+                </td>
+                <td>
+                  {game.scores.reduce((acc, score) => acc + score.throws, 0)}
+                </td>
+                <td>
+                  {averageMarksPerRound80.toFixed(2)}（
+                  {convertAverageMarksPerRoundToRate(averageMarksPerRound80)}）
+                </td>
+                <td>
+                  {averageMarksPerRoundFull.toFixed(2)}（
+                  {convertAverageMarksPerRoundToRate(averageMarksPerRoundFull)}
+                  ）
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       <Link href="/in-game">ゲームを開始</Link>

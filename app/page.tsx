@@ -43,6 +43,8 @@ export default async function Home() {
             <th>15</th>
             <th>BULL</th>
             <th>Total</th>
+            <th>Average Marks per Round(80%)</th>
+            <th>Average Marks per Round(FULL)</th>
           </tr>
         </thead>
         <tbody>
@@ -81,6 +83,24 @@ export default async function Home() {
               </td>
               <td>
                 {game.scores.reduce((acc, score) => acc + score.throws, 0)}
+              </td>
+              <td>
+                {(
+                  ((6 * 10) /
+                    game.scores.reduce(
+                      (acc, score) =>
+                        score.target === "BULL" ? acc : acc + score.throws,
+                      0
+                    )) *
+                  3
+                ).toFixed(2)}
+              </td>
+              <td>
+                {(
+                  ((7 * 10) /
+                    game.scores.reduce((acc, score) => acc + score.throws, 0)) *
+                  3
+                ).toFixed(2)}
               </td>
             </tr>
           ))}

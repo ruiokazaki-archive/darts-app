@@ -55,8 +55,25 @@ export default async function Home() {
             </tr>
           )}
           {games.map((game) => {
+            const totalMarks80 = games.reduce(
+              (acc, game) =>
+                acc +
+                game.scores.reduce(
+                  (acc, score) =>
+                    score.target === "BULL" ? acc : acc + score.marks,
+                  0
+                ),
+              0
+            );
+
+            const totalMarksFull = games.reduce(
+              (acc, game) =>
+                acc + game.scores.reduce((acc, score) => acc + score.marks, 0),
+              0
+            );
+
             const averageMarksPerRound80 =
-              ((6 * 10) /
+              (totalMarks80 /
                 game.scores.reduce(
                   (acc, score) =>
                     score.target === "BULL" ? acc : acc + score.throws,
@@ -64,7 +81,7 @@ export default async function Home() {
                 )) *
               3;
             const averageMarksPerRoundFull =
-              ((7 * 10) /
+              (totalMarksFull /
                 game.scores.reduce((acc, score) => acc + score.throws, 0)) *
               3;
 
@@ -76,28 +93,38 @@ export default async function Home() {
                   game.played_at
                 ).getHours()}:${new Date(game.played_at).getMinutes()}`}</td>
                 <td>
-                  {game.scores.find((score) => score.target === "20")?.throws}
+                  {game.scores.find((score) => score.target === "20")?.throws}（
+                  {game.scores.find((score) => score.target === "20")?.marks}）
                 </td>
                 <td>
-                  {game.scores.find((score) => score.target === "19")?.throws}
+                  {game.scores.find((score) => score.target === "19")?.throws}（
+                  {game.scores.find((score) => score.target === "19")?.marks}）
                 </td>
                 <td>
-                  {game.scores.find((score) => score.target === "18")?.throws}
+                  {game.scores.find((score) => score.target === "18")?.throws}（
+                  {game.scores.find((score) => score.target === "18")?.marks}）
                 </td>
                 <td>
-                  {game.scores.find((score) => score.target === "17")?.throws}
+                  {game.scores.find((score) => score.target === "17")?.throws}（
+                  {game.scores.find((score) => score.target === "17")?.marks}）
                 </td>
                 <td>
-                  {game.scores.find((score) => score.target === "16")?.throws}
+                  {game.scores.find((score) => score.target === "16")?.throws}（
+                  {game.scores.find((score) => score.target === "16")?.marks}）
                 </td>
                 <td>
-                  {game.scores.find((score) => score.target === "15")?.throws}
+                  {game.scores.find((score) => score.target === "15")?.throws}（
+                  {game.scores.find((score) => score.target === "15")?.marks}）
                 </td>
                 <td>
                   {game.scores.find((score) => score.target === "BULL")?.throws}
+                  （
+                  {game.scores.find((score) => score.target === "BULL")?.marks}
+                  ）
                 </td>
                 <td>
-                  {game.scores.reduce((acc, score) => acc + score.throws, 0)}
+                  {game.scores.reduce((acc, score) => acc + score.throws, 0)}（
+                  {game.scores.reduce((acc, score) => acc + score.marks, 0)}）
                 </td>
                 <td>
                   {averageMarksPerRound80.toFixed(2)}（

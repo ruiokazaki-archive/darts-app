@@ -55,20 +55,14 @@ export default async function Home() {
             </tr>
           )}
           {games.map((game) => {
-            const totalMarks80 = games.reduce(
-              (acc, game) =>
-                acc +
-                game.scores.reduce(
-                  (acc, score) =>
-                    score.target === "BULL" ? acc : acc + score.marks,
-                  0
-                ),
+            const totalMarks80 = game.scores.reduce(
+              (acc, score) =>
+                score.target === "BULL" ? acc : acc + score.marks,
               0
             );
 
-            const totalMarksFull = games.reduce(
-              (acc, game) =>
-                acc + game.scores.reduce((acc, score) => acc + score.marks, 0),
+            const totalMarksFull = game.scores.reduce(
+              (acc, score) => acc + score.marks,
               0
             );
 

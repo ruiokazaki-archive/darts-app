@@ -1,5 +1,6 @@
 import { getGames } from "@/app/api/games/fetcher";
 import { convertAverageMarksPerRoundToRate } from "@/common/convertAverageMarksPerRoundToRate";
+import { format } from "@formkit/tempo";
 import Link from "next/link";
 
 export const runtime = "edge";
@@ -81,11 +82,14 @@ export default async function Home() {
 
             return (
               <tr key={game.id}>
-                <td>{`${new Date(game.played_at).getFullYear()}/${
-                  new Date(game.played_at).getMonth() + 1
-                }/${new Date(game.played_at).getDate()} ${new Date(
-                  game.played_at
-                ).getHours()}:${new Date(game.played_at).getMinutes()}`}</td>
+                <td>
+                  {format({
+                    date: game.played_at,
+                    format: "YYYY/MM/DD H:mm",
+                    locale: "ja",
+                    tz: "Asia/Tokyo",
+                  })}
+                </td>
                 <td>
                   {game.scores.find((score) => score.target === "20")?.throws}（
                   {game.scores.find((score) => score.target === "20")?.marks}）

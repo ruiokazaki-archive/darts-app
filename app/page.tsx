@@ -1,6 +1,7 @@
 import { getGames } from '@/app/api/games/fetcher';
 import { convertAverageMarksPerRoundToRate } from '@/common/convert-average-marks-per-round-to-rate';
 import { Button } from '@/components/ui/button';
+import { ApexChartsWrapper } from '@/lib/apexcharts/apexcharts-wrapper';
 import { format } from '@formkit/tempo';
 import Link from 'next/link';
 
@@ -140,6 +141,79 @@ export default async function Home() {
       <Button asChild variant='link'>
         <Link href='/in-game'>ゲームを開始</Link>
       </Button>
+      <ApexChartsWrapper
+        series={[75]}
+        width={600}
+        height={400}
+        type='radialBar'
+        options={{
+          plotOptions: {
+            radialBar: {
+              startAngle: -135,
+              endAngle: 225,
+              hollow: {
+                margin: 0,
+                size: '70%',
+                background: '#fff',
+                image: undefined,
+                imageOffsetX: 0,
+                imageOffsetY: 0,
+                position: 'front',
+                dropShadow: {
+                  enabled: true,
+                  top: 3,
+                  left: 0,
+                  blur: 4,
+                  opacity: 0.24,
+                },
+              },
+              track: {
+                background: '#fff',
+                strokeWidth: '67%',
+                margin: 0,
+                dropShadow: {
+                  enabled: true,
+                  top: -3,
+                  left: 0,
+                  blur: 4,
+                  opacity: 0.35,
+                },
+              },
+              dataLabels: {
+                show: true,
+                name: {
+                  offsetY: -10,
+                  show: true,
+                  color: '#888',
+                  fontSize: '17px',
+                },
+                value: {
+                  color: '#111',
+                  fontSize: '36px',
+                  show: true,
+                },
+              },
+            },
+          },
+          fill: {
+            type: 'gradient',
+            gradient: {
+              shade: 'dark',
+              type: 'horizontal',
+              shadeIntensity: 0.5,
+              gradientToColors: ['#ABE5A1'],
+              inverseColors: true,
+              opacityFrom: 1,
+              opacityTo: 1,
+              stops: [0, 100],
+            },
+          },
+          stroke: {
+            lineCap: 'round',
+          },
+          labels: ['Percent'],
+        }}
+      />
     </main>
   );
 }

@@ -39,5 +39,8 @@
     "lefthook": "^1.6.7",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3"
+  },
+  "volta": {
+    "node": "20.12.0"
   }
 }

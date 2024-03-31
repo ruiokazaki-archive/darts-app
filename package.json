@@ -7,7 +7,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "biome lint --apply ./",
+    "lint:unsafe": "biome lint --apply-unsafe ./",
+    "format": "biome format ./ --write",
+    "check": "biome check --apply ./"
   },
   "dependencies": {
     "@formkit/tempo": "^0.0.19",
@@ -16,11 +19,12 @@
     "@types/react": "18.2.25",
     "@types/react-dom": "18.2.11",
     "@vercel/postgres": "0.5.0",
-    "eslint": "8.51.0",
-    "eslint-config-next": "13.5.4",
     "next": "13.5.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.6.3"
   }
 }

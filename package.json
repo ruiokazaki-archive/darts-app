@@ -10,18 +10,25 @@
     "lint": "biome lint --apply ./",
     "lint:unsafe": "biome lint --apply-unsafe ./",
     "format": "biome format ./ --write",
-    "check": "biome check --apply ./"
+    "check": "biome check --apply ./",
+    "add-component": "pnpm dlx shadcn-ui@latest add"
   },
   "dependencies": {
     "@formkit/tempo": "^0.0.19",
+    "@radix-ui/react-slot": "^1.0.2",
     "@types/ms": "^0.7.32",
     "@types/node": "20.8.3",
     "@types/react": "18.2.25",
     "@types/react-dom": "18.2.11",
     "@vercel/postgres": "0.5.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.363.0",
     "next": "13.5.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "tailwind-merge": "^2.2.2",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2"
   },
   "devDependencies": {

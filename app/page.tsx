@@ -1,5 +1,6 @@
 import { getGames } from '@/app/api/games/fetcher';
 import { convertAverageMarksPerRoundToRate } from '@/common/convert-average-marks-per-round-to-rate';
+import { Button } from '@/components/ui/button';
 import { format } from '@formkit/tempo';
 import Link from 'next/link';
 
@@ -136,7 +137,9 @@ export default async function Home() {
           })}
         </tbody>
       </table>
-      <Link href='/in-game'>ゲームを開始</Link>
+      <Button asChild variant='link'>
+        <Link href='/in-game'>ゲームを開始</Link>
+      </Button>
     </main>
   );
 }

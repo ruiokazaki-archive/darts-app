@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import type { ButtonHTMLAttributes, DetailedHTMLProps, FC } from "react";
-import { memo, useEffect, useRef, useState } from "react";
-import { postGameActions } from "@/app/in-game/actions/post-game";
+import { postGameActions } from '@/app/in-game/actions/post-game';
+import type { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 
-const TARGETS = ["20", "19", "18", "17", "16", "15", "bull"] as const;
+const TARGETS = ['20', '19', '18', '17', '16', '15', 'bull'] as const;
 type Target = (typeof TARGETS)[number];
 
 const Presenter: FC = () => {
@@ -25,9 +25,9 @@ const Presenter: FC = () => {
   const handleChange = (
     target: Target,
     difference: number,
-    throwsCount = 1
+    throwsCount = 1,
   ) => {
-    setScores((prevScores) => ({
+    setScores(prevScores => ({
       ...prevScores,
       [target]: {
         marksCount: prevScores[target].marksCount + difference,
@@ -51,16 +51,15 @@ const Presenter: FC = () => {
     }
   }, [scores, currentTarget]);
 
-  const buttonProps: DetailedHTMLProps<
+  const buttonStyles: DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > = {
     style: {
-      display: "block",
-      width: "100%",
-      height: "100%",
+      display: 'block',
+      width: '100%',
+      height: '100%',
     },
-    type: "button",
   };
 
   return (
@@ -71,50 +70,56 @@ const Presenter: FC = () => {
 
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gridTemplateRows: "repeat(2, 60px)",
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateRows: 'repeat(2, 60px)',
         }}
       >
         <button
-          {...buttonProps}
+          type='button'
+          {...buttonStyles}
           disabled={scores[currentTarget].marksCount >= 10}
           onClick={() => handleChange(currentTarget, 1)}
         >
           1MARK
         </button>
         <button
-          {...buttonProps}
+          type='button'
+          {...buttonStyles}
           disabled={scores[currentTarget].marksCount >= 10}
           onClick={() => handleChange(currentTarget, 2)}
         >
           2MARK
         </button>
         <button
-          {...buttonProps}
+          type='button'
+          {...buttonStyles}
           disabled={
-            scores[currentTarget].marksCount >= 10 || currentTarget === "bull"
+            scores[currentTarget].marksCount >= 10 || currentTarget === 'bull'
           }
           onClick={() => handleChange(currentTarget, 3)}
         >
           3MARK
         </button>
         <button
-          {...buttonProps}
+          type='button'
+          {...buttonStyles}
           disabled={scores[currentTarget].marksCount >= 10}
           onClick={() => handleChange(currentTarget, 0)}
         >
           1MISS
         </button>
         <button
-          {...buttonProps}
+          type='button'
+          {...buttonStyles}
           disabled={scores[currentTarget].marksCount >= 10}
           onClick={() => handleChange(currentTarget, 0, 2)}
         >
           2MISS
         </button>
         <button
-          {...buttonProps}
+          type='button'
+          {...buttonStyles}
           disabled={scores[currentTarget].marksCount >= 10}
           onClick={() => handleChange(currentTarget, 0, 3)}
         >
@@ -127,96 +132,94 @@ const Presenter: FC = () => {
 
       <form action={postGameActions}>
         <input
-          id="target-20-throws_count"
-          type="hidden"
-          name="target-20-throws_count"
+          id='target-20-throws_count'
+          type='hidden'
+          name='target-20-throws_count'
           value={scores[20].throwsCount}
         />
         <input
-          id="target-19-throws_count"
-          type="hidden"
-          name="target-19-throws_count"
+          id='target-19-throws_count'
+          type='hidden'
+          name='target-19-throws_count'
           value={scores[19].throwsCount}
         />
         <input
-          id="target-18-throws_count"
-          type="hidden"
-          name="target-18-throws_count"
+          id='target-18-throws_count'
+          type='hidden'
+          name='target-18-throws_count'
           value={scores[18].throwsCount}
         />
         <input
-          id="target-17-throws_count"
-          type="hidden"
-          name="target-17-throws_count"
+          id='target-17-throws_count'
+          type='hidden'
+          name='target-17-throws_count'
           value={scores[17].throwsCount}
         />
         <input
-          id="target-16-throws_count"
-          type="hidden"
-          name="target-16-throws_count"
+          id='target-16-throws_count'
+          type='hidden'
+          name='target-16-throws_count'
           value={scores[16].throwsCount}
         />
         <input
-          id="target-15-throws_count"
-          type="hidden"
-          name="target-15-throws_count"
+          id='target-15-throws_count'
+          type='hidden'
+          name='target-15-throws_count'
           value={scores[15].throwsCount}
         />
         <input
-          id="target-bull-throws_count"
-          type="hidden"
-          name="target-bull-throws_count"
+          id='target-bull-throws_count'
+          type='hidden'
+          name='target-bull-throws_count'
           value={scores.bull.throwsCount}
         />
         <input
-          id="target-20-marks_count"
-          type="hidden"
-          name="target-20-marks_count"
+          id='target-20-marks_count'
+          type='hidden'
+          name='target-20-marks_count'
           value={scores[20].marksCount}
         />
         <input
-          id="target-19-marks_count"
-          type="hidden"
-          name="target-19-marks_count"
+          id='target-19-marks_count'
+          type='hidden'
+          name='target-19-marks_count'
           value={scores[19].marksCount}
         />
         <input
-          id="target-18-marks_count"
-          type="hidden"
-          name="target-18-marks_count"
+          id='target-18-marks_count'
+          type='hidden'
+          name='target-18-marks_count'
           value={scores[18].marksCount}
         />
         <input
-          id="target-17-marks_count"
-          type="hidden"
-          name="target-17-marks_count"
+          id='target-17-marks_count'
+          type='hidden'
+          name='target-17-marks_count'
           value={scores[17].marksCount}
         />
         <input
-          id="target-16-marks_count"
-          type="hidden"
-          name="target-16-marks_count"
+          id='target-16-marks_count'
+          type='hidden'
+          name='target-16-marks_count'
           value={scores[16].marksCount}
         />
         <input
-          id="target-15-marks_count"
-          type="hidden"
-          name="target-15-marks_count"
+          id='target-15-marks_count'
+          type='hidden'
+          name='target-15-marks_count'
           value={scores[15].marksCount}
         />
         <input
-          id="target-bull-marks_count"
-          type="hidden"
-          name="target-bull-marks_count"
+          id='target-bull-marks_count'
+          type='hidden'
+          name='target-bull-marks_count'
           value={scores.bull.marksCount}
         />
         <button
           hidden
           ref={submitRef}
-          type="submit"
-          disabled={Object.values(scores).some(
-            (score) => score.marksCount < 10
-          )}
+          type='submit'
+          disabled={Object.values(scores).some(score => score.marksCount < 10)}
         >
           Finish
         </button>

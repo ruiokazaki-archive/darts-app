@@ -76,10 +76,10 @@ const RATE_SCORES = [
 
 // Average Marks per Roundをレートに変換する
 export function convertAverageMarksPerRoundToRate(
-  averageMarksPerRound: number
+  averageMarksPerRound: number,
 ): number {
   const { rate } = RATE_SCORES.find(
-    (rate) => rate.score <= averageMarksPerRound
+    rate => rate.score <= averageMarksPerRound,
   ) as (typeof RATE_SCORES)[number];
   return rate;
 }

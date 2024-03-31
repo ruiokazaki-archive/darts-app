@@ -12,7 +12,7 @@ export type DartsScore = {
   marks: number;
 };
 
-type CricketNumber = "20" | "19" | "18" | "17" | "16" | "15" | "BULL";
+type CricketNumber = '20' | '19' | '18' | '17' | '16' | '15' | 'BULL';
 
 export type GameWithScores = Game & {
   scores: DartsScore[];

@@ -1,8 +1,8 @@
-import { InGamePage } from "./components/in-game-page";
+import { InGamePage } from './components/in-game-page';
 
-export const runtime = "edge";
-export const preferredRegion = "home";
-export const dynamic = "force-dynamic";
+export const runtime = 'edge';
+export const preferredRegion = 'home';
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   return (

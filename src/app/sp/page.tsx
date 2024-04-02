@@ -62,9 +62,6 @@ export default async function Page() {
     convertAverageMarksPerRoundToRate(averageMarks80Latest) -
     convertAverageMarksPerRoundToRate(averageMarks80Earlier);
 
-  console.log('averageMarks80Latest', averageMarks80Latest);
-  console.log('averageMarks80Earlier', averageMarks80Earlier);
-
   return (
     <main>
       <Heading variant='h1' className='sr-only'>

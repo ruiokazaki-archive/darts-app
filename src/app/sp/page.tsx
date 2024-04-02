@@ -42,18 +42,20 @@ export default async function Page() {
       return acc + averageMarksPerRound100(game);
     }, 0) / earlierGames.length;
 
-  const totalThrowsLatest = latestGames.reduce(
-    (total, game) =>
-      total +
-      game.scores.reduce((scoreTotal, score) => scoreTotal + score.throws, 0),
-    0,
-  );
-  const totalThrowsEarlier = earlierGames.reduce(
-    (total, game) =>
-      total +
-      game.scores.reduce((scoreTotal, score) => scoreTotal + score.throws, 0),
-    0,
-  );
+  const totalThrowsLatest =
+    latestGames.reduce(
+      (total, game) =>
+        total +
+        game.scores.reduce((scoreTotal, score) => scoreTotal + score.throws, 0),
+      0,
+    ) / latestGames.length;
+  const totalThrowsEarlier =
+    earlierGames.reduce(
+      (total, game) =>
+        total +
+        game.scores.reduce((scoreTotal, score) => scoreTotal + score.throws, 0),
+      0,
+    ) / earlierGames.length;
 
   const averageMarks80Diff = averageMarks80Latest - averageMarks80Earlier;
   const averageMarks100Diff = averageMarks100Latest - averageMarks100Earlier;
@@ -82,16 +84,21 @@ export default async function Page() {
               Throws
             </Typography>
             <Typography variant='h2' as='p' className='tracking-normal'>
-              {totalThrowsLatest}
+              {totalThrowsLatest.toFixed(0)}
             </Typography>
             <div className='flex items-center'>
               {totalThrowsDiff < 0 ? (
                 <ChevronUp className='h-[0.625rem] w-[0.625rem] stroke-lime-200' />
               ) : (
-                <ChevronDown className='h-[0.625rem] w-[0.625rem] stroke-lime-200' />
+                <ChevronDown className='h-[0.625rem] w-[0.625rem] stroke-red-200' />
               )}
-              <Typography className='text-lime-200' variant='detail'>
-                {totalThrowsDiff.toFixed(2)}
+              <Typography
+                className={
+                  totalThrowsDiff < 0 ? 'text-lime-200' : 'stroke-red-200'
+                }
+                variant='detail'
+              >
+                {totalThrowsDiff.toFixed(0)}
               </Typography>
             </div>
           </div>
@@ -108,9 +115,14 @@ export default async function Page() {
               {averageMarks80Diff > 0 ? (
                 <ChevronUp className='h-[0.625rem] w-[0.625rem] stroke-lime-200' />
               ) : (
-                <ChevronDown className='h-[0.625rem] w-[0.625rem] stroke-lime-200' />
+                <ChevronDown className='h-[0.625rem] w-[0.625rem] stroke-red-200' />
               )}
-              <Typography className='text-lime-200' variant='detail'>
+              <Typography
+                className={
+                  averageMarks80Diff > 0 ? 'text-lime-200' : 'stroke-red-200'
+                }
+                variant='detail'
+              >
                 {averageMarks80Diff.toFixed(2)}
               </Typography>
             </div>
@@ -128,9 +140,14 @@ export default async function Page() {
               {averageMarks100Diff > 0 ? (
                 <ChevronUp className='h-[0.625rem] w-[0.625rem] stroke-lime-200' />
               ) : (
-                <ChevronDown className='h-[0.625rem] w-[0.625rem] stroke-lime-200' />
+                <ChevronDown className='h-[0.625rem] w-[0.625rem] stroke-red-200' />
               )}
-              <Typography className='text-lime-200' variant='detail'>
+              <Typography
+                className={
+                  averageMarks100Diff > 0 ? 'text-lime-200' : 'stroke-red-200'
+                }
+                variant='detail'
+              >
                 {averageMarks100Diff.toFixed(2)}
               </Typography>
             </div>

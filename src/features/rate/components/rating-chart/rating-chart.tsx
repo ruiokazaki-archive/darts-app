@@ -24,7 +24,7 @@ const Presenter: FC<Props> = ({ rating, ratingDiff }) => {
           {ratingDiff > 0 ? (
             <ChevronUp className='h-[0.625rem] w-[0.625rem] stroke-lime-200' />
           ) : (
-            <ChevronDown className='h-[0.625rem] w-[0.625rem] stroke-lime-200' />
+            <ChevronDown className='h-[0.625rem] w-[0.625rem] stroke-red-200' />
           )}
           <Typography className='text-lime-200' variant='detail'>
             {ratingDiff.toFixed(2)}

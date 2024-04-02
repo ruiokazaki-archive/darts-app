@@ -26,7 +26,7 @@ const Presenter: FC<Props> = ({ rating, ratingDiff }) => {
           ) : (
             <ChevronDown className='h-[0.625rem] w-[0.625rem] stroke-lime-200' />
           )}
-          <Typography className='text-lime-200 text-xs'>
+          <Typography className='text-lime-200' variant='detail'>
             {ratingDiff.toFixed(2)}
           </Typography>
         </div>
@@ -43,7 +43,7 @@ const Presenter: FC<Props> = ({ rating, ratingDiff }) => {
               endAngle: 225,
               hollow: {
                 size: '70%',
-                background: '#18181B',
+                background: 'transparent',
                 position: 'front',
                 dropShadow: {
                   enabled: true,

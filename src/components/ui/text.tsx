@@ -25,4 +25,4 @@ const Text = React.forwardRef<HTMLTypographyElement, TextProps>(
   },
 );
 
-export default Text;
+export { Text };

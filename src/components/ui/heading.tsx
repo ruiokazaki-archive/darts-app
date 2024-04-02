@@ -25,4 +25,4 @@ const Heading = React.forwardRef<HTMLTypographyElement, HeadingProps>(
   },
 );
 
-export default Heading;
+export { Heading };

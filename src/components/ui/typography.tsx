@@ -3,7 +3,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { type VariantProps, cva } from 'class-variance-authority';
 import * as React from 'react';
 
-const typographyVariants = cva('text-foreground', {
+const typographyVariants = cva('text-foreground text-white', {
   variants: {
     variant: {
       h1: 'font-inter font-extrabold text-6xl tracking-tight',
@@ -69,9 +69,7 @@ const Typography = React.forwardRef<HTMLElement, TypographyProps>(
       : as ?? (variant ? variantElementMap[variant] : undefined) ?? 'div';
     return (
       <Comp
-        className={cn(
-          typographyVariants({ variant, className: ['text-white', className] }),
-        )}
+        className={cn(typographyVariants({ variant, className }))}
         ref={ref}
         {...props}
       />

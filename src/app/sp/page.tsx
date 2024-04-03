@@ -10,7 +10,7 @@ import {
 } from '@/features/rate/utils/get-average-marks-per-round';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-const MAX_GAMES = 10 as const;
+const GAMES_INCLUDED_IN_RATE_CALCULATION = 5 as const;
 
 export default async function Page() {
   const result = await getGames();
@@ -20,7 +20,9 @@ export default async function Page() {
   const allGames = result.data;
   const latestGames = allGames.slice(0, -1);
   const earlierGames =
-    allGames.length > MAX_GAMES ? allGames.slice(1) : allGames;
+    allGames.length > GAMES_INCLUDED_IN_RATE_CALCULATION
+      ? allGames.slice(1)
+      : allGames;
 
   const averageMarks80Latest =
     latestGames.reduce((acc, game) => {

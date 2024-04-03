@@ -94,7 +94,7 @@ export default async function Page() {
               )}
               <Typography
                 className={
-                  totalThrowsDiff < 0 ? 'text-lime-200' : 'stroke-red-200'
+                  totalThrowsDiff < 0 ? 'text-lime-200' : 'text-red-200'
                 }
                 variant='detail'
               >
@@ -119,7 +119,7 @@ export default async function Page() {
               )}
               <Typography
                 className={
-                  averageMarks80Diff > 0 ? 'text-lime-200' : 'stroke-red-200'
+                  averageMarks80Diff > 0 ? 'text-lime-200' : 'text-red-200'
                 }
                 variant='detail'
               >
@@ -144,7 +144,7 @@ export default async function Page() {
               )}
               <Typography
                 className={
-                  averageMarks100Diff > 0 ? 'text-lime-200' : 'stroke-red-200'
+                  averageMarks100Diff > 0 ? 'text-lime-200' : 'text-red-200'
                 }
                 variant='detail'
               >

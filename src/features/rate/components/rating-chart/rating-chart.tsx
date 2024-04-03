@@ -12,7 +12,7 @@ type Props = {
   ratingDiff: number;
 };
 
-const Presenter: FC<Props> = ({ rating, ratingDiff }) => {
+const Component: FC<Props> = ({ rating, ratingDiff }) => {
   return (
     <div className='relative h-80 w-full'>
       <div className='-translate-x-1/2 absolute top-1/3 left-1/2 z-10 flex transform flex-col items-center'>
@@ -94,4 +94,4 @@ const Presenter: FC<Props> = ({ rating, ratingDiff }) => {
   );
 };
 
-export const RatingChart = memo(Presenter);
+export const RatingChart = memo(Component);

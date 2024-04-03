@@ -1,5 +1,6 @@
+import { Sheet } from '@/components/ui/sheet';
 import { Typography } from '@/components/ui/typography';
-import { ChevronDown, ChevronUp, Sheet } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { FC } from 'react';
 import { memo } from 'react';
 
@@ -12,7 +13,7 @@ type Props = {
   averageMarks100Diff: number;
 };
 
-const Presenter: FC<Props> = ({
+const Component: FC<Props> = ({
   totalThrowsLatest,
   totalThrowsDiff,
   averageMarks80Latest,
@@ -21,7 +22,7 @@ const Presenter: FC<Props> = ({
   averageMarks100Diff,
 }) => {
   return (
-    <div className='mx-4 grid h-28 grid-cols-3 gap-2'>
+    <div className='grid h-28 w-full grid-cols-3 gap-2'>
       <Sheet>
         <div className='flex flex-col items-center py-4'>
           <Typography as='h3' variant='table-header'>
@@ -99,4 +100,4 @@ const Presenter: FC<Props> = ({
   );
 };
 
-export const PerformanceOverviewSheets = memo(Presenter);
+export const PerformanceOverviewSheets = memo(Component);

@@ -77,14 +77,16 @@ export default async function Page() {
         />
       </div>
 
-      <PerformanceOverviewSheets
-        totalThrowsLatest={totalThrowsLatest}
-        totalThrowsDiff={totalThrowsDiff}
-        averageMarks80Latest={averageMarks80Latest}
-        averageMarks80Diff={averageMarks80Diff}
-        averageMarks100Latest={averageMarks100Latest}
-        averageMarks100Diff={averageMarks100Diff}
-      />
+      <div className='mx-4'>
+        <PerformanceOverviewSheets
+          totalThrowsLatest={totalThrowsLatest}
+          totalThrowsDiff={totalThrowsDiff}
+          averageMarks80Latest={averageMarks80Latest}
+          averageMarks80Diff={averageMarks80Diff}
+          averageMarks100Latest={averageMarks100Latest}
+          averageMarks100Diff={averageMarks100Diff}
+        />
+      </div>
     </main>
   );
 }

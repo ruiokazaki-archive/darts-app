@@ -14,7 +14,7 @@ type Props = {
 
 const Component: FC<Props> = ({ rating, ratingDiff }) => {
   return (
-    <div className='relative h-80 w-full'>
+    <div className='pointer-events-none relative h-80 w-full'>
       <div className='-translate-x-1/2 absolute top-1/3 left-1/2 z-10 flex transform flex-col items-center'>
         <Typography variant='small'>Rating</Typography>
         <Typography as='p' variant='h2' className='-mt-1 tracking-normal'>

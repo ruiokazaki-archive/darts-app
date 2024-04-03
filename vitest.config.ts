@@ -6,8 +6,8 @@ export default defineConfig({
   test: {
     coverage: {
       provider: 'v8',
-      include: ['{app,common,components,lib}/**/*.{js,ts}'],
-      exclude: ['app/api/**/*.{js,ts}'],
+      include: ['src/{app,common,components,lib}/**/*.{js,ts}'],
+      exclude: ['src/app/api/**/*.{js,ts}'],
     },
   },
 });

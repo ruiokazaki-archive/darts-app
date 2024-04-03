@@ -7,7 +7,7 @@ import { memo, useEffect, useRef, useState } from 'react';
 const TARGETS = ['20', '19', '18', '17', '16', '15', 'bull'] as const;
 type Target = (typeof TARGETS)[number];
 
-const Presenter: FC = () => {
+const Component: FC = () => {
   const [currentTarget, setCurrentTarget] = useState<Target>(TARGETS[0]);
 
   const [scores, setScores] = useState<{
@@ -228,4 +228,4 @@ const Presenter: FC = () => {
   );
 };
 
-export const InGamePage = memo(Presenter);
+export const InGamePage = memo(Component);

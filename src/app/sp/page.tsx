@@ -1,6 +1,7 @@
 import { getGames } from '@/app/api/games/fetcher';
 import { Heading } from '@/components/ui/heading';
 import { RatingChart } from '@/features/rate/components/rating-chart';
+import { RatingLineChart } from '@/features/rate/components/rating-line-chart';
 import { convertAverageMarksPerRoundToRate } from '@/features/rate/utils';
 import {
   averageMarksPerRound80,
@@ -64,20 +65,27 @@ export default async function Page() {
     convertAverageMarksPerRoundToRate(averageMarks80Latest) -
     convertAverageMarksPerRoundToRate(averageMarks80Earlier);
 
+  const rating80LineChartData = allGames.map(game => ({
+    played_at: game.played_at,
+    rating: convertAverageMarksPerRoundToRate(averageMarksPerRound80(game)),
+  }));
+  const rating100LineChartData = allGames.map(game => ({
+    played_at: game.played_at,
+    rating: convertAverageMarksPerRoundToRate(averageMarksPerRound100(game)),
+  }));
+
   return (
     <main>
       <Heading variant='h1' className='sr-only'>
         TopPage
       </Heading>
-
       <div className='mx-8 my-10'>
         <RatingChart
           rating={convertAverageMarksPerRoundToRate(averageMarks80Latest)}
           ratingDiff={ratingDiff}
         />
       </div>
-
-      <div className='mx-4'>
+      <div className='mx-4 my-10'>
         <PerformanceOverviewSheets
           totalThrowsLatest={totalThrowsLatest}
           totalThrowsDiff={totalThrowsDiff}
@@ -85,6 +93,18 @@ export default async function Page() {
           averageMarks80Diff={averageMarks80Diff}
           averageMarks100Latest={averageMarks100Latest}
           averageMarks100Diff={averageMarks100Diff}
+        />
+      </div>
+      <div className='mx-4 my-10'>
+        <RatingLineChart
+          games={rating80LineChartData}
+          title='80% Rating per Game'
+        />
+      </div>
+      <div className='mx-4 my-10'>
+        <RatingLineChart
+          games={rating100LineChartData}
+          title='100% Rating per Game'
         />
       </div>
     </main>

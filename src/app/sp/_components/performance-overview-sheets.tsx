@@ -39,7 +39,7 @@ const Component: FC<Props> = ({
             )}
             <Typography
               className={totalThrowsDiff < 0 ? 'text-lime-200' : 'text-red-200'}
-              variant='detail'
+              variant='small'
             >
               {totalThrowsDiff.toFixed(0)}
             </Typography>
@@ -64,7 +64,7 @@ const Component: FC<Props> = ({
               className={
                 averageMarks80Diff > 0 ? 'text-lime-200' : 'text-red-200'
               }
-              variant='detail'
+              variant='small'
             >
               {averageMarks80Diff.toFixed(2)}
             </Typography>
@@ -89,7 +89,7 @@ const Component: FC<Props> = ({
               className={
                 averageMarks100Diff > 0 ? 'text-lime-200' : 'text-red-200'
               }
-              variant='detail'
+              variant='small'
             >
               {averageMarks100Diff.toFixed(2)}
             </Typography>

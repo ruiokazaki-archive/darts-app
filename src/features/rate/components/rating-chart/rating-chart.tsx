@@ -26,7 +26,7 @@ const Component: FC<Props> = ({ rating, ratingDiff }) => {
           ) : (
             <ChevronDown className='h-[0.625rem] w-[0.625rem] stroke-red-200' />
           )}
-          <Typography className='text-lime-200' variant='detail'>
+          <Typography className='text-lime-200' variant='small'>
             {ratingDiff.toFixed(2)}
           </Typography>
         </div>

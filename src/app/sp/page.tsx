@@ -1,5 +1,4 @@
 import { getGames } from '@/app/api/games/fetcher';
-import { Heading } from '@/components/ui/heading';
 import { RatingChart } from '@/features/rate/components/rating-chart';
 import { RatingLineChart } from '@/features/rate/components/rating-line-chart';
 import { convertAverageMarksPerRoundToRate } from '@/features/rate/utils';
@@ -75,10 +74,7 @@ export default async function Page() {
   }));
 
   return (
-    <main>
-      <Heading variant='h1' className='sr-only'>
-        TopPage
-      </Heading>
+    <>
       <div className='mx-8 my-10'>
         <RatingChart
           rating={convertAverageMarksPerRoundToRate(averageMarks80Latest)}
@@ -107,6 +103,6 @@ export default async function Page() {
           title='100% Rating per Game'
         />
       </div>
-    </main>
+    </>
   );
 }

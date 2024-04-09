@@ -28,10 +28,12 @@ const Presenter: FC = () => {
   const pathname = usePathname();
   const isCurrentPage = getCurrentPageType(pathname);
 
+  if (isCurrentPage === 'IN_GAME') return null;
+
   return (
     <div className='relative grid h-14 grid-cols-[1fr_1fr_auto_1fr_1fr] bg-zinc-800 pt-2'>
       <Button
-        className='flex h-full flex-col justify-end gap-0.5 bg-transparent p-0'
+        className='flex h-full flex-col justify-end gap-0.5 bg-transparent p-0 hover:bg-transparent hover:opacity-60'
         onClick={() => router.push('/sp/')}
       >
         <HomeIcon
@@ -48,7 +50,7 @@ const Presenter: FC = () => {
         </Typography>
       </Button>
       <Button
-        className='flex h-full flex-col justify-end gap-0.5 bg-transparent p-0'
+        className='flex h-full flex-col justify-end gap-0.5 bg-transparent p-0 hover:bg-transparent hover:opacity-60'
         onClick={() => router.push('/sp/data')}
       >
         <LineChartIcon
@@ -74,7 +76,7 @@ const Presenter: FC = () => {
         </Button>
       </div>
       <Button
-        className='flex h-full flex-col justify-end gap-0.5 bg-transparent p-0'
+        className='flex h-full flex-col justify-end gap-0.5 bg-transparent p-0 hover:bg-transparent hover:opacity-60'
         onClick={() => router.push('/sp/activities')}
       >
         <CalendarDaysIcon
@@ -91,7 +93,7 @@ const Presenter: FC = () => {
         </Typography>
       </Button>
       <Button
-        className='flex h-full flex-col justify-end gap-0.5 bg-transparent p-0'
+        className='flex h-full flex-col justify-end gap-0.5 bg-transparent p-0 hover:bg-transparent hover:opacity-60'
         onClick={() => router.push('/sp/settings')}
       >
         <SettingsIcon

@@ -1,8 +1,8 @@
 'use client';
 
-import { postGameActions } from '@/app/in-game/actions/post-game';
 import type { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react';
 import { memo, useEffect, useRef, useState } from 'react';
+import { postGameActions } from '../actions/post-game';
 
 const TARGETS = ['20', '19', '18', '17', '16', '15', 'bull'] as const;
 type Target = (typeof TARGETS)[number];

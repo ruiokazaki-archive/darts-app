@@ -1,8 +1,8 @@
-import { Sheet } from '@/components/ui/sheet';
-import { Typography } from '@/components/ui/typography';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { FC } from 'react';
 import { memo } from 'react';
+import { Sheet } from '../../../components/ui/sheet';
+import { Typography } from '../../../components/ui/typography';
 
 type Props = {
   totalThrowsLatest: number;

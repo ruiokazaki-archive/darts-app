@@ -1,7 +1,7 @@
 'use server';
 
-import { postGame } from '@/app/api/games/fetcher';
 import { redirect } from 'next/navigation';
+import { postGame } from '../../../api/games/fetcher';
 
 export async function postGameActions(formData: FormData) {
   const response = await postGame(formData);

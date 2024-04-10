@@ -1,5 +1,5 @@
-import type { GameWithScores } from '@/app/api/games/types';
 import { describe, expect, test } from 'vitest';
+import type { GameWithScores } from '../../../app/api/games/types';
 import {
   averageMarksPerRound80,
   averageMarksPerRound100,

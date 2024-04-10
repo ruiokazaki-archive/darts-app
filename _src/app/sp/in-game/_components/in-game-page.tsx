@@ -1,8 +1,12 @@
 'use client';
 
-import { DartsMarksIcon } from '@/components/icons/darts-marks-icon';
-import { Button } from '@/components/ui/button';
-import { Sheet } from '@/components/ui/sheet';
+import { AlertTriangle } from 'lucide-react';
+import Link from 'next/link';
+import type { FC } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
+import { DartsMarksIcon } from '../../../../components/icons/darts-marks-icon';
+import { Button } from '../../../../components/ui/button';
+import { Sheet } from '../../../../components/ui/sheet';
 import {
   Table,
   TableBody,
@@ -10,12 +14,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import { Typography } from '@/components/ui/typography';
-import { AlertTriangle } from 'lucide-react';
-import Link from 'next/link';
-import type { FC } from 'react';
-import { memo, useEffect, useRef, useState } from 'react';
+} from '../../../../components/ui/table';
+import { Typography } from '../../../../components/ui/typography';
 import { postGameActions } from '../actions/post-game';
 
 const TARGETS = ['20', '19', '18', '17', '16', '15', 'bull'] as const;

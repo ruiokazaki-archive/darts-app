@@ -1,4 +1,4 @@
-import { customFetch } from '@/common/custom-fetch';
+import { customFetch } from '../../../common/custom-fetch';
 import type { GameWithScores } from './types';
 
 export async function getGames() {

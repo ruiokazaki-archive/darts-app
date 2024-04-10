@@ -1,8 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { Typography } from '@/components/ui/typography';
-import { cn } from '@/lib/shadcn/utils';
 import {
   CalendarDaysIcon,
   Gamepad2Icon,
@@ -13,6 +10,9 @@ import {
 import { usePathname, useRouter } from 'next/navigation';
 import type { FC } from 'react';
 import { memo } from 'react';
+import { Button } from '../../../components/ui/button';
+import { Typography } from '../../../components/ui/typography';
+import { cn } from '../../../lib/shadcn/utils';
 
 const getCurrentPageType = (pathname: string) => {
   if (pathname.startsWith('/sp/data')) return 'DATA';

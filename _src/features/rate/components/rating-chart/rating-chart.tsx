@@ -1,9 +1,9 @@
-import { Typography } from '@/components/ui/typography';
-import { extractDecimal } from '@/features/rate/utils';
-import { ApexChartsWrapper } from '@/lib/apexcharts/apexcharts-wrapper';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { FC } from 'react';
 import { memo } from 'react';
+import { Typography } from '../../../../components/ui/typography';
+import { ApexChartsWrapper } from '../../../../lib/apexcharts/apexcharts-wrapper';
+import { extractDecimal } from '../../utils';
 
 const MIN_RATING_VALUE = 1 as const;
 

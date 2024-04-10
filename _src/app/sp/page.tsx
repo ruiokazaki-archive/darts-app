@@ -1,11 +1,11 @@
-import { getGames } from '@/app/api/games/fetcher';
-import { RatingChart } from '@/features/rate/components/rating-chart';
-import { RatingLineChart } from '@/features/rate/components/rating-line-chart';
-import { convertAverageMarksPerRoundToRate } from '@/features/rate/utils';
+import { RatingChart } from '../../features/rate/components/rating-chart';
+import { RatingLineChart } from '../../features/rate/components/rating-line-chart';
+import { convertAverageMarksPerRoundToRate } from '../../features/rate/utils';
 import {
   averageMarksPerRound80,
   averageMarksPerRound100,
-} from '@/features/rate/utils/get-average-marks-per-round';
+} from '../../features/rate/utils/get-average-marks-per-round';
+import { getGames } from '../api/games/fetcher';
 import { PerformanceOverviewSheets } from './_components/performance-overview-sheets';
 
 const GAMES_INCLUDED_IN_RATE_CALCULATION = 5 as const;

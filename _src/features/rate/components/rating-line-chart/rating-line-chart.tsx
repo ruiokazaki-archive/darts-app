@@ -1,7 +1,7 @@
-import { Sheet } from '@/components/ui/sheet';
-import { ApexChartsWrapper } from '@/lib/apexcharts/apexcharts-wrapper';
 import { format } from '@formkit/tempo';
 import { type FC, memo } from 'react';
+import { Sheet } from '../../../../components/ui/sheet';
+import { ApexChartsWrapper } from '../../../../lib/apexcharts/apexcharts-wrapper';
 
 type Props = {
   games: {

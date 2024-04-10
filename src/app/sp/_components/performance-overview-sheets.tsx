@@ -25,7 +25,7 @@ const Component: FC<Props> = ({
     <div className='grid h-28 w-full grid-cols-3 gap-2'>
       <Sheet>
         <div className='flex flex-col items-center py-4'>
-          <Typography as='h3' variant='table-header'>
+          <Typography as='h3' variant='p-bold'>
             Throws
           </Typography>
           <Typography variant='h2' as='p' className='tracking-normal'>
@@ -48,7 +48,7 @@ const Component: FC<Props> = ({
       </Sheet>
       <Sheet>
         <div className='flex flex-col items-center py-4'>
-          <Typography as='h3' variant='table-header'>
+          <Typography as='h3' variant='p-bold'>
             MPR 80
           </Typography>
           <Typography variant='h2' as='p' className='tracking-normal'>
@@ -73,7 +73,7 @@ const Component: FC<Props> = ({
       </Sheet>
       <Sheet>
         <div className='flex flex-col items-center py-4'>
-          <Typography as='h3' variant='table-header'>
+          <Typography as='h3' variant='p-bold'>
             MPR 100
           </Typography>
           <Typography variant='h2' as='p' className='tracking-normal'>

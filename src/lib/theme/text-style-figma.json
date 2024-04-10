@@ -3,190 +3,84 @@
   "textStyles": [
     {
       "name": "h1",
-      "fontFamily": "Inter",
       "fontWeight": "Extra Bold",
       "fontSize": 48,
       "letterSpacing": {
         "unit": "PERCENT",
         "value": -1.2
-      },
-      "textCase": "ORIGINAL"
+      }
     },
     {
       "name": "h2",
-      "fontFamily": "Inter",
       "fontWeight": "Semi Bold",
       "fontSize": 30,
       "letterSpacing": {
         "unit": "PERCENT",
         "value": -0.75
-      },
-      "textCase": "ORIGINAL"
+      }
     },
     {
       "name": "h3",
-      "fontFamily": "Inter",
       "fontWeight": "Semi Bold",
       "fontSize": 24,
       "letterSpacing": {
         "unit": "PERCENT",
         "value": -0.6
-      },
-      "textCase": "ORIGINAL"
+      }
     },
     {
       "name": "h4",
-      "fontFamily": "Inter",
       "fontWeight": "Semi Bold",
       "fontSize": 20,
       "letterSpacing": {
         "unit": "PERCENT",
         "value": -0.5
-      },
-      "textCase": "ORIGINAL"
+      }
     },
     {
       "name": "large",
-      "fontFamily": "Inter",
       "fontWeight": "Semi Bold",
-      "fontSize": 18,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
+      "fontSize": 18
     },
     {
       "name": "lead",
-      "fontFamily": "Inter",
       "fontWeight": "Regular",
-      "fontSize": 20,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
+      "fontSize": 20
     },
     {
       "name": "p",
-      "fontFamily": "Inter",
       "fontWeight": "Regular",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
+      "fontSize": 16
     },
     {
       "name": "p-medium",
-      "fontFamily": "Inter",
       "fontWeight": "Medium",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
+      "fontSize": 16
     },
     {
       "name": "list",
-      "fontFamily": "Inter",
       "fontWeight": "Regular",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
+      "fontSize": 16
     },
     {
       "name": "body",
-      "fontFamily": "Inter",
       "fontWeight": "Regular",
-      "fontSize": 14,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
+      "fontSize": 14
     },
     {
       "name": "body-medium",
-      "fontFamily": "Inter",
       "fontWeight": "Medium",
-      "fontSize": 14,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
+      "fontSize": 14
     },
     {
       "name": "small",
-      "fontFamily": "Inter",
       "fontWeight": "Medium",
-      "fontSize": 14,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
+      "fontSize": 14
     },
     {
       "name": "detail",
-      "fontFamily": "Inter",
       "fontWeight": "Medium",
-      "fontSize": 12,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "blockquote",
-      "fontFamily": "Inter",
-      "fontWeight": "Italic",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "inline code",
-      "fontFamily": "Menlo",
-      "fontWeight": "Bold",
-      "fontSize": 14,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "table head",
-      "fontFamily": "Inter",
-      "fontWeight": "Bold",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
-    },
-    {
-      "name": "table item",
-      "fontFamily": "Inter",
-      "fontWeight": "Regular",
-      "fontSize": 16,
-      "letterSpacing": {
-        "unit": "PERCENT",
-        "value": 0
-      },
-      "textCase": "ORIGINAL"
+      "fontSize": 12
     }
   ]
 }

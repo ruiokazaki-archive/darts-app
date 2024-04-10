@@ -11,11 +11,11 @@ export default function middleware(request: NextRequest) {
   const hasPrefixSpOrPc = hasPrefixSp || hasPrefixPc;
 
   if (!hasPrefixSpOrPc && viewport === 'mobile') {
-    return NextResponse.rewrite(new URL('/sp', request.url));
+    return NextResponse.redirect(new URL('/sp', request.url));
   }
 
   if (!hasPrefixSpOrPc && viewport === 'desktop') {
-    return NextResponse.rewrite(new URL('/pc', request.url));
+    return NextResponse.redirect(new URL('/pc', request.url));
   }
 
   return NextResponse.next();

@@ -6,10 +6,10 @@ import * as React from 'react';
 const typographyVariants = cva('text-foreground text-white', {
   variants: {
     variant: {
-      h1: 'font-inter font-extrabold text-5xl tracking-tight',
-      h2: 'font-inter font-semibold text-3xl tracking-tighter',
-      h3: 'font-inter font-semibold text-2xl tracking-tighter',
-      h4: 'font-inter font-semibold text-xl tracking-tight',
+      h1: 'font-inter font-extrabold text-5xl tracking-wide',
+      h2: 'font-inter font-semibold text-3xl tracking-wide',
+      h3: 'font-inter font-semibold text-2xl tracking-wide',
+      h4: 'font-inter font-semibold text-xl tracking-wide',
       large: 'font-inter font-semibold text-lg',
       lead: 'font-inter font-normal text-xl',
       p: 'font-inter font-normal text-base',

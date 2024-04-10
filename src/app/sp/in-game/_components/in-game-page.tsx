@@ -1,6 +1,20 @@
 'use client';
 
-import type { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react';
+import { DartsMarksIcon } from '@/components/icons/darts-marks-icon';
+import { Button } from '@/components/ui/button';
+import { Sheet } from '@/components/ui/sheet';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Typography } from '@/components/ui/typography';
+import { AlertTriangle } from 'lucide-react';
+import Link from 'next/link';
+import type { FC } from 'react';
 import { memo, useEffect, useRef, useState } from 'react';
 import { postGameActions } from '../actions/post-game';
 
@@ -51,84 +65,143 @@ const Component: FC = () => {
     }
   }, [scores, currentTarget]);
 
-  const buttonStyles: DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > = {
-    style: {
-      display: 'block',
-      width: '100%',
-      height: '100%',
-    },
-  };
-
   return (
-    <div>
-      <h2>
-        currentTarget: <span style={{ fontSize: 40 }}>{currentTarget}</span>
-      </h2>
+    <div className='px-4'>
+      <Sheet className='my-4 grid h-[calc(100dvw_-_2rem_-_2rem)] w-[calc(100dvw_-_2rem)] place-items-center'>
+        <span className='absolute size-[calc(100dvw_-_2rem_-_2rem_-_2.5rem)] rounded-full bg-red-900' />
+        <span className='absolute size-[calc(100dvw_-_2rem_-_2rem_-_5rem)] rounded-full bg-red-700' />
+        <span className='absolute size-[calc(100dvw_-_2rem_-_2rem_-_7.5rem)] rounded-full bg-red-800' />
+        <span className='absolute size-[calc(100dvw_-_2rem_-_2rem_-_10rem)] rounded-full bg-red-700' />
+        <span className='absolute size-[calc(100dvw_-_2rem_-_2rem_-_12.5rem)] rounded-full bg-red-900' />
+        <Typography variant='h1' as='p' className='absolute'>
+          {currentTarget}
+        </Typography>
+      </Sheet>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gridTemplateRows: 'repeat(2, 60px)',
-        }}
-      >
-        <button
-          type='button'
-          {...buttonStyles}
-          disabled={scores[currentTarget].marksCount >= 10}
-          onClick={() => handleChange(currentTarget, 1)}
-        >
-          1MARK
-        </button>
-        <button
-          type='button'
-          {...buttonStyles}
-          disabled={scores[currentTarget].marksCount >= 10}
-          onClick={() => handleChange(currentTarget, 2)}
-        >
-          2MARK
-        </button>
-        <button
-          type='button'
-          {...buttonStyles}
-          disabled={
-            scores[currentTarget].marksCount >= 10 || currentTarget === 'bull'
-          }
-          onClick={() => handleChange(currentTarget, 3)}
-        >
-          3MARK
-        </button>
-        <button
-          type='button'
-          {...buttonStyles}
-          disabled={scores[currentTarget].marksCount >= 10}
-          onClick={() => handleChange(currentTarget, 0)}
-        >
-          1MISS
-        </button>
-        <button
-          type='button'
-          {...buttonStyles}
-          disabled={scores[currentTarget].marksCount >= 10}
-          onClick={() => handleChange(currentTarget, 0, 2)}
-        >
-          2MISS
-        </button>
-        <button
-          type='button'
-          {...buttonStyles}
-          disabled={scores[currentTarget].marksCount >= 10}
-          onClick={() => handleChange(currentTarget, 0, 3)}
-        >
-          3MISS
-        </button>
+      <div className='my-4'>
+        <Typography variant='h4' as='p'>
+          {scores[currentTarget].throwsCount} Throws Made
+        </Typography>
+        <Typography variant='h4' as='p'>
+          {10 - scores[currentTarget].marksCount} Marks Left
+        </Typography>
       </div>
 
-      <h3>currentScore: {scores[currentTarget].marksCount}</h3>
-      <h3>currentThrows: {scores[currentTarget].throwsCount}</h3>
+      <div className='gird-rows-2 grid grid-cols-3 gap-2'>
+        <Sheet className='grid place-items-center gap-2 px-2 py-5' asChild>
+          <button
+            disabled={scores[currentTarget].marksCount >= 10}
+            type='button'
+            onClick={() => handleChange(currentTarget, 1)}
+          >
+            <Typography variant='p-bold'>1 Mark</Typography>
+            <DartsMarksIcon counts={{ marksCount: 1 }} />
+          </button>
+        </Sheet>
+        <Sheet className='grid place-items-center gap-2 px-2 py-5' asChild>
+          <button
+            disabled={scores[currentTarget].marksCount >= 10}
+            type='button'
+            onClick={() => handleChange(currentTarget, 2)}
+          >
+            <Typography variant='p-bold'>2 Marks</Typography>
+            <DartsMarksIcon counts={{ marksCount: 2 }} />
+          </button>
+        </Sheet>
+        <Sheet className='grid place-items-center gap-2 px-2 py-5' asChild>
+          <button
+            disabled={
+              scores[currentTarget].marksCount >= 10 || currentTarget === 'bull'
+            }
+            type='button'
+            onClick={() => handleChange(currentTarget, 3)}
+          >
+            <Typography variant='p-bold'>3 Marks</Typography>
+            <DartsMarksIcon counts={{ marksCount: 3 }} />
+          </button>
+        </Sheet>
+        <Sheet className='grid place-items-center gap-2 px-2 py-5' asChild>
+          <button
+            disabled={scores[currentTarget].marksCount >= 10}
+            type='button'
+            onClick={() => handleChange(currentTarget, 0, 1)}
+          >
+            <Typography variant='p-bold'>1 Miss</Typography>
+            <DartsMarksIcon counts={{ missesCount: 1 }} />
+          </button>
+        </Sheet>
+        <Sheet className='grid place-items-center gap-2 px-2 py-5' asChild>
+          <button
+            disabled={scores[currentTarget].marksCount >= 10}
+            type='button'
+            onClick={() => handleChange(currentTarget, 0, 2)}
+          >
+            <Typography variant='p-bold'>2 Misses</Typography>
+            <DartsMarksIcon counts={{ missesCount: 2 }} />
+          </button>
+        </Sheet>
+        <Sheet className='grid place-items-center gap-2 px-2 py-5' asChild>
+          <button
+            disabled={scores[currentTarget].marksCount >= 10}
+            type='button'
+            onClick={() => handleChange(currentTarget, 0, 3)}
+          >
+            <Typography variant='p-bold'>3 Misses</Typography>
+            <DartsMarksIcon counts={{ missesCount: 3 }} />
+          </button>
+        </Sheet>
+      </div>
+
+      <div className='my-4 w-[calc(100dvw_-_2rem)]'>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead />
+              {TARGETS.map(target => (
+                <TableHead className='uppercase' key={target}>
+                  <Typography variant='body'>{target}</Typography>
+                </TableHead>
+              ))}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className='text-left'>
+                <Typography variant='body'>Throws</Typography>
+              </TableCell>
+              {TARGETS.map(target => (
+                <TableCell className='text-right'>
+                  <Typography variant='body'>
+                    {scores[target].throwsCount}
+                  </Typography>
+                </TableCell>
+              ))}
+            </TableRow>
+            <TableRow>
+              <TableCell className='text-left'>
+                <Typography variant='body'>Marks</Typography>
+              </TableCell>
+              {TARGETS.map(target => (
+                <TableCell className='text-right'>
+                  <Typography variant='body'>
+                    {scores[target].marksCount}
+                  </Typography>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+
+      <Button
+        className='mx-auto my-10 flex w-fit gap-2 bg-zinc-800 hover:bg-zinc-800 hover:opacity-60'
+        asChild
+      >
+        <Link href='/sp'>
+          <AlertTriangle size='1rem' />
+          <Typography variant='body'>Quit Game</Typography>
+        </Link>
+      </Button>
 
       <form action={postGameActions}>
         <input

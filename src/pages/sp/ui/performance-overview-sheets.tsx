@@ -1,5 +1,6 @@
+import { Sheet } from '@/shared/ui/sheet';
 import { Typography } from '@/shared/ui/typography';
-import { ChevronDown, ChevronUp, Sheet } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { FC } from 'react';
 import { memo } from 'react';
 

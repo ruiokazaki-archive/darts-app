@@ -4,6 +4,7 @@ import { DartsMarksIcon } from '@/shared/icons/darts-marks-icon';
 import { Button } from '@/shared/ui/button';
 import { Sheet } from '@/shared/ui/sheet';
 import {
+  Table,
   TableBody,
   TableCell,
   TableHead,
@@ -11,7 +12,7 @@ import {
   TableRow,
 } from '@/shared/ui/table';
 import { Typography } from '@/shared/ui/typography';
-import { AlertTriangle, Table } from 'lucide-react';
+import { AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { memo, useEffect, useRef, useState } from 'react';
@@ -169,7 +170,7 @@ const Component: FC = () => {
                 <Typography variant='body'>Throws</Typography>
               </TableCell>
               {TARGETS.map(target => (
-                <TableCell className='text-right'>
+                <TableCell className='text-right' key={target}>
                   <Typography variant='body'>
                     {scores[target].throwsCount}
                   </Typography>
@@ -181,7 +182,7 @@ const Component: FC = () => {
                 <Typography variant='body'>Marks</Typography>
               </TableCell>
               {TARGETS.map(target => (
-                <TableCell className='text-right'>
+                <TableCell className='text-right' key={target}>
                   <Typography variant='body'>
                     {scores[target].marksCount}
                   </Typography>

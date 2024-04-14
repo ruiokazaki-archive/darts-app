@@ -1,3 +1,5 @@
+import '@/app/globals.css';
+
 // default values
 export const dynamic = 'auto';
 export const dynamicParams = true;

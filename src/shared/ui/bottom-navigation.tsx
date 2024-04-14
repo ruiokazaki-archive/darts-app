@@ -14,11 +14,11 @@ import { memo } from 'react';
 import { Button } from './button';
 import { Typography } from './typography';
 
-const getCurrentPageType = (pathname: string) => {
-  if (pathname.startsWith('/sp/data')) return 'DATA';
-  if (pathname.startsWith('/sp/in-game')) return 'IN_GAME';
-  if (pathname.startsWith('/sp/activities')) return 'ACTIVITIES';
-  if (pathname.startsWith('/sp/settings')) return 'SETTINGS';
+const getCurrentPageType = (pathname: string | null) => {
+  if (pathname?.startsWith('/sp/data')) return 'DATA';
+  if (pathname?.startsWith('/sp/in-game')) return 'IN_GAME';
+  if (pathname?.startsWith('/sp/activities')) return 'ACTIVITIES';
+  if (pathname?.startsWith('/sp/settings')) return 'SETTINGS';
 
   return 'HOME';
 };

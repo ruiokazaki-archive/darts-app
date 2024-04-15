@@ -1,5 +1,5 @@
+import type { DartsScore, Game, GameWithScores } from '@/entitie/game/types';
 import { sql } from '@vercel/postgres';
-import type { DartsScore, Game, GameWithScores } from './types';
 
 export async function GET() {
   const { rows: games } = await sql<Game>`SELECT * FROM games`;

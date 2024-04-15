@@ -1,5 +1,2 @@
-import { InGamePage } from './_components/in-game-page';
-
-export default async function Home() {
-  return <InGamePage />;
-}
+export * from '@/page/sp/in-game/page';
+export { default } from '@/page/sp/in-game/page';

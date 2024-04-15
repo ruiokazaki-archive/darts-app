@@ -1,4 +1,4 @@
-import type { GameWithScores } from '@/entities/game/types';
+import type { GameWithScores } from '@/entitie/game/types';
 
 const totalMarks80 = (game: GameWithScores) =>
   game.scores.reduce(

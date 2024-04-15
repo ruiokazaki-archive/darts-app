@@ -1,4 +1,4 @@
-import { RATE_SCORES } from '@/entities/rate/constants/rating-table';
+import { RATE_SCORES } from '@/entitie/rate/constants/rating-table';
 
 export const convertAverageMarksPerRoundToRate = (
   averageMarksPerRound: number,

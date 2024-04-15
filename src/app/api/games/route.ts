@@ -1,4 +1,4 @@
-import type { DartsScore, Game, GameWithScores } from '@/entities/game/types';
+import type { DartsScore, Game, GameWithScores } from '@/entitie/game/types';
 import { sql } from '@vercel/postgres';
 
 export async function GET() {

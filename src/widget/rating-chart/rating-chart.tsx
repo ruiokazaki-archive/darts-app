@@ -1,4 +1,4 @@
-import { extractDecimal } from '@/entities/rate/utils';
+import { extractDecimal } from '@/entitie/rate/utils';
 import { ApexChartsWrapper } from '@/shared/libs/apexcharts/apexcharts-wrapper';
 import { Typography } from '@/shared/ui/typography';
 import { ChevronDown, ChevronUp } from 'lucide-react';

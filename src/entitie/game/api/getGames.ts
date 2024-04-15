@@ -1,4 +1,4 @@
-import type { GameWithScores } from '@/entities/game/types';
+import type { GameWithScores } from '@/entitie/game/types';
 import { customFetch } from '@/shared/api/custom-fetch';
 
 export async function getGames() {

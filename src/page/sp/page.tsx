@@ -1,12 +1,12 @@
-import { getGames } from '@/entities/game/api/getGames';
+import { getGames } from '@/entitie/game/api/getGames';
 import {
   averageMarksPerRound80,
   averageMarksPerRound100,
   convertAverageMarksPerRoundToRate,
-} from '@/entities/rate/utils';
-import { RatingChart } from '@/widgets/rating-chart';
-import { RatingLineChart } from '@/widgets/rating-line-chart';
-import { PerformanceOverviewSheets } from './ui/performance-overview-sheets';
+} from '@/entitie/rate/utils';
+import { PerformanceOverviewSheets } from '@/widget/performance-overview-sheets';
+import { RatingChart } from '@/widget/rating-chart';
+import { RatingLineChart } from '@/widget/rating-line-chart';
 
 const GAMES_INCLUDED_IN_RATE_CALCULATION = 5 as const;
 

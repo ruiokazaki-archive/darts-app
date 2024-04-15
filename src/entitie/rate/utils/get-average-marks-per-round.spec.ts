@@ -1,4 +1,4 @@
-import type { GameWithScores } from '@/entities/game/types';
+import type { GameWithScores } from '@/entitie/game/types';
 import { describe, expect, test } from 'vitest';
 import {
   averageMarksPerRound80,

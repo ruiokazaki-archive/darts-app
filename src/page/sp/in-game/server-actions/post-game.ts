@@ -1,6 +1,6 @@
 'use server';
 
-import { postGame } from '@/entities/game/api/postGame';
+import { postGame } from '@/entitie/game/api/postGame';
 import { redirect } from 'next/navigation';
 
 export async function postGameActions(formData: FormData) {
